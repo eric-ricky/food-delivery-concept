@@ -5,12 +5,10 @@ const Logo = () => {
   const router = useRouter();
   return (
     <p
-      className="text-orange-500 text-3xl font-bold cursor-pointer "
+      className=" text-3xl font-bold cursor-pointer "
       onClick={() => router.push("/")}
     >
-      <span className="not-italic font-extrabold text-4xl text-orange-700">
-        N
-      </span>
+      <span className="not-italic font-extrabold text-3xl">n</span>
       stant
     </p>
   );

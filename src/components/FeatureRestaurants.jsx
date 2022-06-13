@@ -15,11 +15,11 @@ const FeatureRestaurants = ({ title, restaurants, category }) => {
 
   return (
     <section
-      className="container mx-auto w-full pt-4 px-4 md:px-0 pb-16"
+      className="container mx-auto w-full pt-4 px-4 md:px-0 pb-4"
       id={category}
     >
-      <div className="w-full flex items-center justify-between mb-16">
-        <p className="text-2xl font-semibold capitalize text-headingColor relative before:absolute before:rounded-lg before:content before:w-32 before:h-1 before:-bottom-2 before:left-0 before:bg-gradient-to-tr from-orange-400 to-orange-600 transition-all ease-in-out duration-100">
+      <div className="w-full flex items-center justify-between mb-4">
+        <p className="text-2xl font-bold  text-headingColor relative before:absolute before:rounded-lg before:content before:w-32 before:h-0.5 before:-bottom-2 before:left-0 before:bg-gradient-to-tr from-orange-400 to-orange-600 transition-all ease-in-out duration-100">
           {title}
         </p>
 
@@ -56,7 +56,7 @@ const FeatureRestaurants = ({ title, restaurants, category }) => {
                   })
                 }
               >
-                <div className="bg-gray-200 rounded-lg max-h-48 lg:w-375 w-275 overflow-hidden ">
+                <div className="bg-gray-200 rounded-lg max-h-48 lg:w-375 w-225 overflow-hidden ">
                   <img
                     src={n.img}
                     alt="Person using a pen to cross a task off a productivity paper card."

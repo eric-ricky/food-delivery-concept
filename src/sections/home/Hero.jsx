@@ -1,7 +1,31 @@
 import React from "react";
+import RowContainer from "../../components/RowContainer";
 import Delivery from "../../assets/img/delivery.png";
 import HeroBg from "../../assets/img/bg_main.png";
-import { heroData } from "../../dummy/data";
+
+const herodata = [
+  {
+    id: 1,
+    image:
+      "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80",
+    title: "The food you want, faster",
+    action: "Explore",
+  },
+  {
+    id: 2,
+    image:
+      "https://images.unsplash.com/photo-1561758033-d89a9ad46330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+    title: "Order Delicous Eats Instantly",
+    action: "Explore",
+  },
+  {
+    id: 3,
+    image:
+      "https://cdn.pixabay.com/photo/2022/05/19/20/21/fried-legs-7208116_960_720.jpg",
+    title: "Restaurant to your door step",
+    action: "Explore",
+  },
+];
 
 const Hero = () => {
   return (
@@ -9,26 +33,30 @@ const Hero = () => {
       className="container mx-auto w-full pt-32 lg:pt-52 px-4 md:px-0 mb-16"
       id="home"
     >
-      <div className="drop-shadow-[0_35px_35px_rgba(0,0,0,0.05)] bg-orange-50 w-[100%] min-h-[130px] flex justify-between align-center py-4 lg:px-[10px] px-4 rounded-md lg:flex-row flex-col">
-        <div className="flex flex-1 align-center flex-col justify-center lg:p-8 p-2">
-          <h3 className="lg:text-[3rem] text-[2rem] font-medium text-[#2a2b3c] lg:w-[100%]">
-            Order Delicious Eats Nstantly
-          </h3>
-          <p className="lg:text-base text-lg lg:w-96 text-[#989594] my-2 ">
-            Hungry? Find the food you crave and order from restaurants easily
-            Nstantly.
-          </p>
-          <a
-            href="#"
-            className="bg-gradient-to-br from-orange-400 to-orange-500 px-4 py-2 w-fit rounded-lg hover:shadow-lg transition-all ease-in-out text-white"
-          >
-            Order Now
-          </a>
-        </div>
+      <div className="flex align-center gap-8 w-[100%]">
+        <RowContainer scrollValue={0}>
+          {herodata?.map((data) => (
+            <div
+              key={data.id}
+              style={{
+                backgroundImage: `linear-gradient(90deg, rgba(5,13,22,0.9750117612688729) 0%, rgba(5,13,22,0.4222027725048279) 55%, rgba(5,13,22,0.0536634466621313) 100%),url(${data.image})`,
+                backgroundPosition: "center",
+              }}
+              className="drop-shadow-[0_35px_35px_rgba(0,0,0,0.05)] rounded-xl py-16 px-6 min-w-[290px] lg:min-w-1/1 "
+            >
+              <h3 className="lg:text-[3rem] text-[2rem] font-medium text-[#f3f3f5] lg:w-[100%] z-index-1">
+                {data.title}
+                {/* <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-pink-500 relative inline-block">
+                <span class="relative text-white">Delicious</span>{" "}
+              </span> */}
+              </h3>
 
-        <div className="flex align-center justify-end lg:pr-16 w-auto h-fit">
-          <img src={HeroBg.src} className="w-[50%] h-auto" />
-        </div>
+              <p class="text-2xl font-semibold italic text-start text-white mt-4">
+                Explore
+              </p>
+            </div>
+          ))}
+        </RowContainer>
       </div>
     </section>
   );

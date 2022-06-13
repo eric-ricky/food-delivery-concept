@@ -88,16 +88,29 @@ const Header = () => {
           </div>
 
           <div className="relative">
-            <img
-              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
-              alt="user"
-              className="rounded-full w-10 h-10 min-w-[40px] min-h-[40px] cursor-pointer drop-shadow-[0_18px_15px_rgba(0,0,0,0.25)]"
-              onClick={() => setShowMenu((prev) => !prev)}
-            />
-            {showMenu && (
-              <AccountMenu
-                user={{ email: "james@gmail.com", username: "James Kyalo" }}
-              />
+            {user ? (
+              <>
+                <img
+                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+                  alt="user"
+                  className="rounded-full w-10 h-10 min-w-[40px] min-h-[40px] cursor-pointer drop-shadow-[0_18px_15px_rgba(0,0,0,0.25)]"
+                  onClick={() => setShowMenu((prev) => !prev)}
+                />
+                {showMenu && (
+                  <AccountMenu
+                    user={{ email: "james@gmail.com", username: "James Kyalo" }}
+                  />
+                )}
+              </>
+            ) : (
+              <>
+                <MdOutlineAccountCircle
+                  className="rounded-full w-10 h-10 min-w-[40px] min-h-[40px] drop-shadow-xl cursor-pointer"
+                  onClick={() => setShowMenu((prev) => !prev)}
+                />
+
+                {showMenu && <AccountMenu user={null} />}
+              </>
             )}
           </div>
         </div>

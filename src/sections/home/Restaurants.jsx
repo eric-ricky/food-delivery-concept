@@ -6,7 +6,7 @@ const Restaurants = () => {
   return (
     <>
       <FeatureRestaurants
-        title="Popular near you"
+        title="Top picks near you"
         restaurants={toprated}
         category="popular"
       />

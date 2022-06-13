@@ -31,7 +31,7 @@ const LoginForm = () => {
               type="text"
               name="email-address"
               id="email-address"
-              autocomplete="email"
+              autoComplete="email"
               class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
             />
           </div>
@@ -47,7 +47,7 @@ const LoginForm = () => {
               id="password"
               name="password"
               type="password"
-              autocomplete="current-password"
+              autoComplete="current-password"
               required
               class="appearance-none mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               placeholder="Password"
