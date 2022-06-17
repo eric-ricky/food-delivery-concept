@@ -15,7 +15,7 @@ const Header = () => {
   const { user } = useContext(AuthContext);
 
   return (
-    <header className="fixed w-screen z-50 md:p-6 md:px-16 px-4 p-3 bg-white">
+    <header className="fixed w-screen z-50 md:p-6 md:px-16 px-4 p-3 bg-white border-b-2 lg:border-0 border-slate-100 bg-blue-40">
       {/* desktop and tablet */}
       <div className="container mx-auto hidden md:flex w-full h-full items-center justify-between gap-8">
         <Logo />
@@ -70,7 +70,8 @@ const Header = () => {
 
       {/* mobile */}
       <div className="flex md:hidden w-full h-full items-center justify-between">
-        <Logo />
+        {/* <Logo /> */}
+        <p className="text-orange-700 font-bold text-2xl">nstant</p>
 
         <div className="flex items-center justify-center gap-8">
           <div

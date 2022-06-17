@@ -1,116 +1,81 @@
-import React, { useContext, useState, useEffect } from "react";
-import { useRouter } from "next/router";
-
-import { IoFastFood } from "react-icons/io5";
-import { BsPlusLg, BsDashLg } from "react-icons/bs";
-import { AiFillDelete } from "react-icons/ai";
+import React from "react";
 import RowContainer from "../../components/RowContainer";
 
-import { categories } from "../../dummy/data";
-import { CartCtx } from "../../context/cartContext";
+import Delivery from "../../assets/img/delivery.png";
 
-const Categories = ({ restaurant }) => {
-  const dishes = restaurant?.dishes.map((dish) => ({ ...dish, qty: 1 }));
-  const {
-    cart: { cartItems },
-    addToCart,
-  } = useContext(CartCtx);
-  const [filter, setFilter] = useState("meal");
-  const [scrollValue, setScrollValue] = useState(0);
+const data = [
+  {
+    id: 4,
+    image:
+      "https://co-restaurants.roocdn.com/images/83f0ca716e138b226c519aa013fdd8afcfcbfc02/shortcut/burgers-1.png?width=125.25&height=66&fit=crop&bg-color=fabe00&auto=webp&format=png",
+    text: "Burgers",
+  },
+  {
+    id: 2,
+    image:
+      "https://co-restaurants.roocdn.com/images/83f0ca716e138b226c519aa013fdd8afcfcbfc02/shortcut/chicken-wings.png?width=125.25&height=66&fit=crop&bg-color=9c006d&auto=webp&format=png",
+    text: "Chicken",
+  },
+  {
+    id: 1,
+    image:
+      "https://co-restaurants.roocdn.com/images/83f0ca716e138b226c519aa013fdd8afcfcbfc02/shortcut/organic.png?width=125.25&height=66&fit=crop&bg-color=00ccbc&auto=webp&format=png",
+    text: "Healthy",
+  },
 
-  const dishInCart = (dish) => {
-    // return items.some((item) => item.id === dish.id);
-    return cartItems.some((item) => item.id === dish.id);
-  };
+  {
+    id: 3,
+    image:
+      "https://co-restaurants.roocdn.com/images/83f0ca716e138b226c519aa013fdd8afcfcbfc02/shortcut/acai.png?width=125.25&height=66&fit=crop&bg-color=00ccbc&auto=webp&format=png",
+    text: "Breakfast",
+  },
+];
+const images = [
+  "https://co-restaurants.roocdn.com/images/83f0ca716e138b226c519aa013fdd8afcfcbfc02/shortcut/burgers-1.png?width=125.25&height=66&fit=crop&bg-color=fabe00&auto=webp&format=png",
+  "https://co-restaurants.roocdn.com/images/83f0ca716e138b226c519aa013fdd8afcfcbfc02/shortcut/chicken-wings.png?width=125.25&height=66&fit=crop&bg-color=9c006d&auto=webp&format=png",
+  "https://co-restaurants.roocdn.com/images/83f0ca716e138b226c519aa013fdd8afcfcbfc02/shortcut/organic.png?width=125.25&height=66&fit=crop&bg-color=00ccbc&auto=webp&format=png",
+  "https://co-restaurants.roocdn.com/images/83f0ca716e138b226c519aa013fdd8afcfcbfc02/shortcut/acai.png?width=125.25&height=66&fit=crop&bg-color=00ccbc&auto=webp&format=png",
+];
 
+const Categories = () => {
   return (
     <section
-      className="container mx-auto  w-full pt-4 px-4 md:px-0 pb-16"
-      id="categories"
+      className="container mx-auto w-full pt-16 lg:pt-32 px-4 md:px-0 mb-2"
+      id="home"
     >
-      <div className=" flex flex-col w-full pb-6 mx-auto">
-        <div className="w-full flex items-center justify-center lg:gap-2 gap-4 pb-6 mx-auto">
-          <RowContainer scrollValue={scrollValue}>
-            {categories &&
-              categories.map((category) => (
-                <div
-                  key={category.id}
-                  className={`group ${
-                    filter === category.urlParamName
-                      ? "bg-cartNumBg"
-                      : "bg-card"
-                  } w-[94px] min-w-fit p-2 h-auto cursor-pointer rounded-lg drop-shadow-xl flex items-center justify-center hover:bg-cartNumBg `}
-                  onClick={() => setFilter(category.urlParamName)}
-                >
-                  <p
-                    className={`text-sm ${
-                      filter === category.urlParamName
-                        ? "text-white"
-                        : "text-textColor"
-                    } group-hover:text-white`}
-                  >
-                    {category.name}
-                  </p>
-                </div>
-              ))}
-          </RowContainer>
-        </div>
-
-        <div className="flex align-center justify-center flex-wrap lg:gap-8 gap-4 mt-16">
-          {restaurant &&
-            dishes?.map((dish) => (
-              <div
-                key={dish.id}
-                className="w-32 lg:w-60 mb-4 bg-cardOverlay backdrop-blur-sm rounded-3xl flex flex-col items-center justify-center drop-shadow-lg cursor-pointer"
-              >
-                <div
-                  style={{
-                    background: `url(${dish.image})`,
-                    backgroundRepeat: "no-repeat",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                  }}
-                  className="rounded-lg h-32 lg:h-48 w-full overflow-hidden "
-                >
-                  <div className="flex align-center justify-between absolute top-4 right-4 bg-white text-black text-base py-1 px-2 rounded-lg drop-shadow-lg">
-                    {dishInCart(dish) ? (
-                      <AiFillDelete
-                        onClick={() => {
-                          const items = cartItems.filter(
-                            (item) => item.id !== dish.id
-                          );
-                          addToCart({
-                            restId: restaurant?.id,
-                            cartItems: items,
-                          });
-                        }}
-                        style={{
-                          marginTop: "0.1rem",
-                        }}
-                      />
-                    ) : (
-                      <BsPlusLg
-                        onClick={() =>
-                          addToCart({
-                            restId: restaurant?.id,
-                            cartItems: [...cartItems, dish],
-                          })
-                        }
-                      />
-                    )}
-                  </div>
-                </div>
-
-                <div className="max-h-20 flex align-center justify-between flex-col my-4 w-full p-4">
-                  <p className="lg:text-lg text-xs font-medium text-gray-900">
-                    {dish.name}
-                  </p>
-                  <h3 className="text-sm text-gray-700">KES {dish.price}</h3>
-                </div>
-              </div>
-            ))}
-        </div>
+      <div className="flex align-center gap-4 mt-8">
+        <img src={Delivery.src} alt="delivery" className="w-10 h-10" />
+        <p className="mt-2 p-0 font-medium">Food Delivery</p>
       </div>
+
+      <RowContainer scrollValue={0}>
+        {data?.map((el, i) => (
+          <div
+            key={i}
+            style={{
+              backgroundImage: `url(${el.image})`,
+            }}
+            className="min-w-[200px] p-16 relative bg-no-repeat bg-cover rounded-sm lg:min-w-[250px] bg-[#123456]"
+          >
+            <span className="absolute left-4 bottom-4 text-white font-bold">
+              {el.text}
+            </span>
+          </div>
+        ))}
+        {data?.map((el, i) => (
+          <div
+            key={i}
+            style={{
+              backgroundImage: `url(${el.image})`,
+            }}
+            className="min-w-[200px] p-16 relative bg-no-repeat bg-cover rounded-sm lg:min-w-[250px] bg-[#123456]"
+          >
+            <span className="absolute left-4 bottom-4 text-white font-bold">
+              {el.text}
+            </span>
+          </div>
+        ))}
+      </RowContainer>
     </section>
   );
 };

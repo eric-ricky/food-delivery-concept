@@ -30,11 +30,11 @@ const herodata = [
 const Hero = () => {
   return (
     <section
-      className="container mx-auto w-full pt-32 lg:pt-52 px-4 md:px-0 mb-16"
+      className="container mx-auto w-full pt-2 lg:pt-4 px-4 md:px-0 mb-8"
       id="home"
     >
       <div className="flex align-center gap-8 w-[100%]">
-        <RowContainer scrollValue={0}>
+        <RowContainer scrollValue={0} styles="lg:gap-16 gap-4 my-4">
           {herodata?.map((data) => (
             <div
               key={data.id}
@@ -42,18 +42,18 @@ const Hero = () => {
                 backgroundImage: `linear-gradient(90deg, rgba(5,13,22,0.9750117612688729) 0%, rgba(5,13,22,0.4222027725048279) 55%, rgba(5,13,22,0.0536634466621313) 100%),url(${data.image})`,
                 backgroundPosition: "center",
               }}
-              className="drop-shadow-[0_35px_35px_rgba(0,0,0,0.05)] rounded-xl py-16 px-6 min-w-[290px] lg:min-w-1/1 "
+              className="drop-shadow-[0_35px_35px_rgba(0,0,0,0.05)] rounded-lg py-10 px-6 min-w-[290px] lg:min-w-1/1 "
             >
-              <h3 className="lg:text-[3rem] text-[2rem] font-medium text-[#f3f3f5] lg:w-[100%] z-index-1">
+              <h3 className="lg:text-[2rem] text-[1.7rem] font-medium text-[#f3f3f5] lg:w-[100%] z-index-1">
                 {data.title}
                 {/* <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-pink-500 relative inline-block">
                 <span class="relative text-white">Delicious</span>{" "}
               </span> */}
               </h3>
 
-              <p class="text-2xl font-semibold italic text-start text-white mt-4">
+              {/* <p class="text-2xl font-semibold italic text-start text-white mt-4">
                 Explore
-              </p>
+              </p> */}
             </div>
           ))}
         </RowContainer>

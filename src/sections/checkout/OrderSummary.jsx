@@ -17,7 +17,9 @@ const OrderSummary = () => {
 
   return (
     <div className="container mx-auto pt-8 px-4">
-      <h3 class="text-lg font-medium leading-6 text-gray-900">Order Summary</h3>
+      <h3 className="text-lg font-medium leading-6 text-gray-900">
+        Order Summary
+      </h3>
 
       {cartItems && cartItems.length > 0 && (
         <div className="lg:w-[50%] w-full  rounded-t-[2rem] flex flex-col justify-between overflow-y-scroll scrollbar-none pb-8">

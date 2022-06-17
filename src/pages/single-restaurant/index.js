@@ -2,8 +2,8 @@ import React from "react";
 import { useRouter } from "next/router";
 import { restaurants } from "../../dummy/data";
 import MainLayout from "../../layout/MainLayout";
-import Categories from "../../sections/home/Categories";
 import Hero from "../../sections/single-restaurant/Hero";
+import Menu from "../../sections/single-restaurant/Menu";
 
 const SingleRestaurant = () => {
   const router = useRouter();
@@ -14,7 +14,8 @@ const SingleRestaurant = () => {
     <MainLayout>
       <Hero restaurant={restaurant} />
       <main className="mt-4">
-        <Categories restaurant={restaurant} />
+        <Menu restaurant={restaurant} />
+        {/* <Categories restaurant={restaurant} /> */}
       </main>
     </MainLayout>
   );

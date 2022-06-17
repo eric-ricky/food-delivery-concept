@@ -1,14 +1,20 @@
 import MainLayout from "../layout/MainLayout";
+import Categories from "../sections/home/Categories";
 
 import Hero from "../sections/home/Hero";
-import Restaurants from "../sections/home/Restaurants";
+import Recommended from "../sections/home/Recommended";
+import SpecialMenu from "../sections/home/SpecialMenu";
+import TopPicks from "../sections/home/TopPicks";
 
 const Home = () => {
   return (
     <>
       <MainLayout>
+        <Categories />
         <Hero />
-        <Restaurants />
+        <TopPicks />
+        <SpecialMenu />
+        <Recommended />
       </MainLayout>
     </>
   );

@@ -1,17 +1,16 @@
 import React, { useEffect, useRef } from "react";
 
-const RowContainer = ({ scrollValue, children }) => {
+const RowContainer = ({ styles, scrollValue, children }) => {
   const rowContainer = useRef();
 
   useEffect(() => {
-    console.log(scrollValue);
     rowContainer.current.scrollLeft += scrollValue;
   }, [scrollValue]);
 
   return (
     <div
       ref={rowContainer}
-      className="first-letter:w-full flex items-center lg:gap-16 gap-4 my-2 scroll-smooth overflow-x-scroll scrollbar-none"
+      className={`first-letter:w-full flex items-center  scroll-smooth overflow-x-scroll scrollbar-none my-2 ${styles}`}
     >
       {children}
     </div>
